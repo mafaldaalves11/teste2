@@ -15,7 +15,369 @@
   <meta name="description" content="Página de apresentação de Michael Scott (The Office): biografia, citações e aparições.">
   <meta name="author" content="Raquel Oliveira">
   <link rel="stylesheet" href="assets/css/estilos.css">
-
+<style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Estilos das abas */
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2a0a15 100%);
+            padding: 15px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(216, 27, 96, 0.3);
+        }
+        
+        .tab-button {
+            padding: 12px 25px;
+            background: rgba(216, 27, 96, 0.2);
+            border: 1px solid rgba(216, 27, 96, 0.5);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.4s;
+            font-weight: 600;
+            color: #f8bbd0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+        
+        .tab-button:hover {
+            background: rgba(216, 27, 96, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+        }
+        
+        .tab-button.active {
+            background: #d81b60;
+            color: white;
+            font-weight: bold;
+            border: 1px solid #d81b60;
+            box-shadow: 0 0 20px rgba(216, 27, 96, 0.5);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 0;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Estilos específicos para a Home - Design Futurista */
+        .hero {
+            background: linear-gradient(135deg, #1a0a12 0%, #3a0a1a 100%);
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(216, 27, 96, 0.3);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(216, 27, 96, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: #fff;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(216, 27, 96, 0.5);
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #f8bbd0, #d81b60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(216, 27, 96, 0.5); }
+            to { text-shadow: 0 0 20px rgba(216, 27, 96, 0.8), 0 0 30px rgba(216, 27, 96, 0.6); }
+        }
+        
+        .hero p {
+            color: #f8bbd0;
+            font-size: 1.4em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(216, 27, 96, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 80px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            background: rgba(26, 10, 18, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(216, 27, 96, 0.2);
+            padding: 30px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #d81b60, #f8bbd0, #d81b60);
+            z-index: -1;
+            border-radius: 16px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 0.3;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.3);
+            border: 1px solid rgba(216, 27, 96, 0.5);
+        }
+        
+        .feature-card h3 {
+            color: #f8bbd0;
+            border-bottom: 2px solid rgba(216, 27, 96, 0.5);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        
+        .feature-card p {
+            color: #ddd;
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, rgba(58, 10, 26, 0.8) 0%, rgba(26, 10, 18, 0.9) 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+            margin: 80px 0;
+            font-style: italic;
+            font-size: 1.8em;
+            line-height: 1.6;
+            position: relative;
+            border-top: 1px solid rgba(216, 27, 96, 0.3);
+            border-bottom: 1px solid rgba(216, 27, 96, 0.3);
+        }
+        
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            font-size: 8em;
+            color: rgba(216, 27, 96, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .quote-section::after {
+            content: '"';
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 8em;
+            color: rgba(216, 27, 96, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .quote-author {
+            display: block;
+            margin-top: 30px;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 0.8em;
+            color: #f8bbd0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .welcome-section {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .welcome-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #f8bbd0, #d81b60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .welcome-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #d81b60, #f8bbd0);
+        }
+        
+        .welcome-section p {
+            color: #ddd;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        .call-to-action {
+            text-align: center;
+            margin: 100px 0;
+            position: relative;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #d81b60, #f48fb1);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.4s;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 25px rgba(216, 27, 96, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.6);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .call-to-action h2 {
+            color: #f8bbd0;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        
+        .call-to-action p {
+            color: #ddd;
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero p {
+                font-size: 1.1em;
+            }
+            
+            .feature-card {
+                min-width: 100%;
+            }
+            
+            .quote-section {
+                font-size: 1.4em;
+                padding: 60px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
   <header id="site-header" role="banner" class="hero-header">
@@ -256,3 +618,4 @@
 
 </body>
 </html>
+
