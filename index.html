@@ -1,99 +1,366 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-<!--
-Projeto: Página sobre uma personagem — Michael Scott (The Office)
-Autor: Raquel Oliveira
-Data (atualização): 2025-10-16
-Tema: Estética inspirada em "The Office" (paleta corporativa, limpa)
--->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Michael Scott — The Office</title>
-<meta name="description" content="Página de apresentação de Michael Scott (The Office): biografia, citações e aparições.">
-<meta name="author" content="Raquel Oliveira">
+  <!--
+    Projeto: Página sobre uma personagem — Michael Scott (The Office)
+    Autor: Raquel Oliveira
+    Data (atualização): 2025-10-16
+    Tema: Estética inspirada em "The Office" (paleta corporativa, limpa)
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michael Scott — The Office</title>
+  <meta name="description" content="Página de apresentação de Michael Scott (The Office): biografia, citações e aparições.">
+  <meta name="author" content="Raquel Oliveira">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Paleta inspirada em 'The Office' --- */
+    :root{
+      --blue-gray: #3A506B;    /* cor institucional */
+      --blue-light: #5BC0EB;   /* destaques */
+      --soft-yellow: #FFD166;  /* pequenos realces */
+      --muted-gray: #E5E5E5;   /* fundos de secção */
+      --text-dark: #1C1C1C;    /* texto */
+      --white: #FFFFFF;
+      --card-shadow: 0 6px 18px rgba(58,80,107,0.12);
+      --radius: 10px;
+    }
 
+    /* Reset mínimo */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+      color:var(--text-dark);
+      background: linear-gradient(180deg, #fafafa 0%, #f3f5f7 100%);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.6;
+    }
 
-<style>
-/* --- Paleta inspirada em 'The Office' --- */
-:root{
---blue-gray: #3A506B; /* cor institucional */
---blue-light: #5BC0EB; /* destaques */
---soft-yellow: #FFD166; /* pequenos realces */
---muted-gray: #E5E5E5; /* fundos de secção */
---text-dark: #1C1C1C; /* texto */
---white: #FFFFFF;
---card-shadow: 0 6px 18px rgba(58,80,107,0.12);
---radius: 10px;
-}
+    /* Layout wrapper */
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
 
+    /* Header / Hero */
+    .hero-header{
+      background: linear-gradient(90deg, rgba(58,80,107,0.95), rgba(46,65,86,0.95));
+      color:var(--white);
+      padding:40px 0;
+      border-bottom:4px solid rgba(91,192,235,0.08);
+      box-shadow: 0 8px 30px rgba(58,80,107,0.08);
+      position:relative;
+    }
+    .hero-content{max-width:1100px;margin:0 auto;padding:0 20px;text-align:left}
+    .hero-content h1{
+      font-family: 'Roboto Slab', serif;
+      font-weight:700;
+      font-size:2.4rem;
+      letter-spacing:0.4px;
+      margin-bottom:6px;
+    }
+    .hero-sub{color:rgba(255,255,255,0.9);font-size:0.95rem}
 
-/* Reset mínimo */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
-color:var(--text-dark);
-background: linear-gradient(180deg, #fafafa 0%, #f3f5f7 100%);
--webkit-font-smoothing:antialiased;
-line-height:1.6;
-}
+    /* Navigation */
+    .site-nav{
+      background:var(--white);
+      border-bottom:1px solid #e6e9ec;
+      position:sticky;top:0;z-index:40;
+      box-shadow: 0 6px 18px rgba(46,65,86,0.04);
+    }
+    .site-nav .wrap{display:flex;align-items:center;justify-content:flex-start;padding:12px 20px}
+    .site-nav ul{display:flex;gap:18px;list-style:none}
+    .site-nav a{color:var(--blue-gray);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
+    .site-nav a:hover, .site-nav a:focus{background:var(--muted-gray);color:var(--text-dark)}
 
+    /* Main layout */
+    main{padding:28px 20px}
+    h2{font-family:'Roboto Slab',serif;color:var(--blue-gray);margin-bottom:12px}
 
-/* Layout wrapper */
-.wrap{max-width:1100px;margin:0 auto;padding:20px}
+    section#sobre p{max-width:70ch;color:#2b2b2b}
 
+    .layout{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-top:18px}
 
-/* Header / Hero */
-.hero-header{
-background: linear-gradient(90deg, rgba(58,80,107,0.95), rgba(46,65,86,0.95));
-color:var(--white);
-padding:40px 0;
-border-bottom:4px solid rgba(91,192,235,0.08);
-box-shadow: 0 8px 30px rgba(58,80,107,0.08);
-position:relative;
-}
-.hero-content{max-width:1100px;margin:0 auto;padding:0 20px;text-align:left}
-.hero-content h1{
-font-family: 'Roboto Slab', serif;
-font-weight:700;
-font-size:2.4rem;
-letter-spacing:0.4px;
-margin-bottom:6px;
-}
-.hero-sub{color:rgba(255,255,255,0.9);font-size:0.95rem}
+    /* Cards */
+    .card{
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--card-shadow);
+      border:1px solid rgba(10,10,10,0.03);
+    }
+    .card h3{font-size:1.15rem;color:var(--blue-gray);margin-bottom:8px}
 
+    /* Quotes */
+    blockquote{border-left:4px solid var(--blue-light);padding:12px 16px;margin:12px 0;background:#fbfdff;border-radius:8px;color:#173343}
+    blockquote footer{display:block;margin-top:8px;color:#6b6b6b;font-size:.9rem}
 
-/* Navigation */
-.site-nav{
-background:var(--white);
-border-bottom:1px solid #e6e9ec;
-position:sticky;top:0;z-index:40;
-box-shadow: 0 6px 18px rgba(46,65,86,0.04);
-}
-.site-nav .wrap{display:flex;align-items:center;justify-content:flex-start;padding:12px 20px}
-.site-nav ul{display:flex;gap:18px;list-style:none}
-.site-nav a{color:var(--blue-gray);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
-.site-nav a:hover, .site-nav a:focus{background:var(--muted-gray);color:var(--text-dark)}
+    /* Aside / timeline */
+    aside{position:relative}
+    #cronologia h2{margin-bottom:8px}
+    .Cronologia{list-style:none}
 
+    /* Episódios notáveis */
+    .episodios-notaveis{margin-top:20px}
+    .momentos-marcantes li{margin-bottom:12px}
+    .momentos-marcantes strong{display:block;color:var(--blue-gray);margin-bottom:6px}
 
-/* Main layout */
-main{padding:28px 20px}
-h2{font-family:'Roboto Slab',serif;color:var(--blue-gray);margin-bottom:12px}
+    /* Footer */
+    footer[role="contentinfo"]{
+      margin-top:40px;padding:28px 20px;background:#fff;border-top:1px solid #eee;color:#444;border-radius:8px
+    }
+    #creditos p{margin-bottom:8px}
 
+    /* Back to top */
+    .back-to-top{
+      position:fixed;right:18px;bottom:18px;background:var(--blue-light);color:var(--white);padding:10px 12px;border-radius:50%;text-decoration:none;box-shadow:0 8px 20px rgba(91,192,235,0.18);font-weight:700;display:inline-flex;align-items:center;justify-content:center;
+    }
+    .back-to-top:hover{transform:translateY(-3px)}
 
-section#sobre p{max-width:70ch;color:#2b2b2b}
+    /* Responsive */
+    @media (max-width:900px){
+      .layout{grid-template-columns:1fr;}
+      .hero-content{text-align:center}
+      .hero-content h1{font-size:1.8rem}
+      .site-nav .wrap{justify-content:center}
+    }
 
+  </style>
+</head>
+<body>
+  <header id="site-header" role="banner" class="hero-header">
+    <div class="hero-content wrap">
+      <h1>Michael Scott (The Office)</h1>
+      <div class="hero-sub">Personagem | Gerente Regional — Dunder Mifflin, Scranton</div>
+    </div>
+  </header>
 
-.layout{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-top:18px}
+  <nav aria-label="Navegação principal" class="site-nav">
+    <div class="wrap">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#bio">Biografia</a></li>
+        <li><a href="#citas">Citações</a></li>
+        <li><a href="#aparicoes">Aparições</a></li>
+        <li><a href="#contactos">Contactos</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <main id="conteudo-principal" class="wrap">
+    <section id="sobre" aria-labelledby="sobre-michael">
+      <h2 id="sobre-michael">Quem é Michael Scott?</h2>
+      <p>
+        Michael Gary Scott é o carismático, desastrado e inesquecível gerente regional da Dunder Mifflin Paper Company em <em>Scranton</em>, personagem central da série <strong>The Office</strong>.
+        Conhecido pelo seu humor embaraçoso, tentativas inusitadas de liderança e desejo constante de ser amado pelos colegas, Michael mistura momentos de genuína empatia com situações de puro constrangimento.
+        Interpretado por Steve Carell, representa uma figura complexa que explora temas como liderança, ingenuidade social e nostalgia do ambiente de escritório, proporcionando tanto cenas cómicas quanto emocionantes ao longo da série.
+      </p>
+    </section>
 
-/* Cards */
-.card{
-background:var(--white);
+    <div class="layout">
+      <section id="bio" aria-labelledby="bio-titulo">
+        <h2 id="bio-titulo">Biografia</h2>
+
+        <article class="card" aria-labelledby="origens-titulo">
+          <h3 id="origens-titulo">Origens e carreira</h3>
+          <p>
+           Michael trabalhou a maior parte da vida em vendas e acabou por assumir a gerência regional da filial de Scranton.
+            A sua abordagem de liderança é frequentemente caótica e ineficaz, mas ele acredita firmemente no valor da camaradagem e do ambiente familiar no local de trabalho. Apesar das suas falhas, Michael é dedicado à sua equipa e, em momentos cruciais, demonstra uma capacidade surpreendente para inspirar e apoiar os seus colegas.
+          </p>
+        </article>
+
+        <article class="card" aria-labelledby="personalidade-titulo">
+          <h3 id="personalidade-titulo">Personalidade</h3>
+            <p>
+            Michael Scott é uma figura complexa, marcada por uma mistura de ingenuidade, entusiasmo e carência afetiva. Busca constantemente aprovação e amizade dos colegas, confundindo frequentemente os limites entre chefe e amigo. O seu humor é muitas vezes inapropriado ou embaraçoso, mas raramente mal-intencionado — resulta mais da sua falta de filtro social e desejo de ser o centro das atenções.
+            </p>
+
+            <ul>
+            <li><strong>Necessidade de aceitação:</strong> Tem um desejo profundo de ser amado e incluído, o que o leva a esforçar-se demasiado para agradar aos outros.</li>
+            <li><strong>Humor peculiar:</strong> Usa piadas, imitações e referências à cultura pop para criar laços, mesmo que nem sempre sejam apropriadas ao contexto.</li>
+            <li><strong>Ingenuidade e otimismo:</strong> Mantém uma visão positiva, mesmo perante situações difíceis, e acredita genuinamente no potencial das pessoas à sua volta.</li>
+            <li><strong>Falta de autoconsciência:</strong> Muitas vezes não percebe o impacto das suas ações ou palavras, o que gera situações constrangedoras e cómicas.</li>
+            <li><strong>Empatia genuína:</strong> Apesar dos erros, demonstra momentos de grande empatia e preocupação pelo bem-estar da equipa.</li>
+            <li><strong>Ambição:</strong> Quer ser simultaneamente um líder respeitado e um amigo próximo dos funcionários, o que nem sempre é compatível.</li>
+            <li><strong>Motivação:</strong> Procura reconhecimento, aprovação e proximidade emocional com os colegas.</li>
+            <li><strong>Hobbies:</strong> Gosta de improvisar cenas, organizar eventos de escritório, criar personagens fictícias e realizar sketches humorísticos.</li>
+            <li><strong>Resiliência:</strong> Apesar das críticas e fracassos, raramente desiste e está sempre pronto para tentar de novo.</li>
+            </ul>
+        </article>
+
+        <section id="citas" aria-labelledby="citas-titulo" style="margin-top:22px">
+          <h2 id="citas-titulo">As suas citações mais icónicas</h2>
+          <div class="card">
+            <blockquote>"That's what she said." (usada em contextos de duplo sentido, aparece repetidamente ao longo da série.)</blockquote>
+            <blockquote>"I am Beyoncé, always."</blockquote>
+            <blockquote>"Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me."</blockquote>
+            <blockquote>"I'm not superstitious, but I am a little stitious."</blockquote>
+            <blockquote>"Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way."</blockquote>
+            <blockquote>"I declare bankruptcy!"</blockquote>
+            <blockquote>"This is an environment of welcoming, and you should just get the hell out of here."</blockquote>
+            <blockquote>"I'm Michael Scott. World's Best Boss."<footer>— Michael Scott</footer></blockquote>
+          </div>
+        </section>
+
+      </section>
+
+      <aside aria-labelledby="cronologia">
+        <h2 id="cronologia">Aparições e episódios</h2>
+        <article class="card">
+          <h4>Cronologia das aparições</h4>
+          <ul class="Cronologia">
+            <li>
+              <strong>Temporada 1 (2005)</strong>
+              <ul>
+                <li>Primeira aparição em "Pilot" (Episódio 1)</li>
+                <li>Estabelecimento do estilo de liderança único</li>
+                <li>Interações iniciais com a equipa</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 2 (2005-2006)</strong>
+              <ul>
+                <li>Desenvolvimento de relações com Jan Levinson</li>
+                <li>Primeiros conflitos com Dwight Schrute</li>
+                <li>Eventos notáveis: "The Dundies"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 3 (2006-2007)</strong>
+              <ul>
+                <li>Introdução de novos personagens (Andy Bernard, Karen Filippelli)</li>
+                <li>Desenvolvimento do romance com Jan</li>
+                <li>Eventos notáveis: "The Job"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 4 (2007-2008)</strong>
+              <ul>
+                <li>Michael enfrenta desafios pessoais e profissionais</li>
+                <li>Relação com Jan torna-se mais complexa</li>
+                <li>Eventos notáveis: "Dinner Party"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 5 (2008-2009)</strong>
+              <ul>
+                <li>Michael funda a Michael Scott Paper Company</li>
+                <li>Retorno à Dunder Mifflin após acordo</li>
+                <li>Eventos notáveis: "Stress Relief"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 6 (2009-2010)</strong>
+              <ul>
+                <li>Michael lida com a chegada de novos colegas</li>
+                <li>Relação com Holly Flax começa a desenvolver-se</li>
+                <li>Eventos notáveis: "Niagara"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 7 (2010-2011)</strong>
+              <ul>
+                <li>Michael e Holly tornam-se um casal</li>
+                <li>Decisão de Michael de deixar a Dunder Mifflin</li>
+                <li>Eventos notáveis: "Goodbye, Michael"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 8 (2011-2012)</strong>
+              <ul>
+                <li>Michael não está presente, mas é frequentemente mencionado</li>
+                <li>Desenvolvimento de novos líderes na empresa</li>
+                <li>Eventos notáveis: "Garden Party"</li>
+              </ul>
+            </li>
+
+            <li>
+              <strong>Temporada 9 (2012-2013)</strong>
+              <ul>
+                <li>Michael faz uma aparição especial no episódio final</li>
+                <li>Conclusão das histórias dos personagens principais</li>
+              </ul>
+            </li>
+
+          </ul>
+        </article>
+      </aside>
+
+    </div>
+
+    <section class="episodios-notaveis">
+      <div class="card" style="margin-top:20px">
+        <h4>Episódios notáveis</h4>
+        <p>
+          Michael Scott foi o protagonista principal de <em>The Office</em> desde a primeira até à sétima temporada, sendo uma das figuras mais icónicas da série. A sua presença foi fundamental para o tom humorístico e emocional do programa.
+        </p>
+        <ul class="momentos-marcantes">
+          <li>
+            <strong>"Diversity Day" (T1E2):</strong>
+            <span>Michael tenta liderar um seminário de diversidade, mas acaba por ofender os colegas com piadas e estereótipos. O episódio destaca o seu estilo de liderança desastrado e a dificuldade em compreender limites.</span>
+          </li>
+          <li>
+            <strong>"The Dundies" (T2E1):</strong>
+            <span>Michael organiza a cerimónia anual de prémios no Chili's, insistindo em reconhecer (e embaraçar) os funcionários. Demonstra o seu desejo de ser amado e de criar um ambiente familiar, mesmo que de forma questionável.</span>
+          </li>
+          <li>
+            <strong>"Dinner Party" (T4E9):</strong>
+            <span>Considerado um dos episódios mais icónicos, mostra Michael e Jan a receberem colegas em casa. O jantar transforma-se numa sucessão de situações desconfortáveis, expondo as fragilidades da relação de Michael.</span>
+          </li>
+          <li>
+            <strong>"Goodbye, Michael" (T7E22):</strong>
+            <span>No seu episódio de despedida, Michael opta por sair discretamente, despedindo-se individualmente de cada colega. O episódio revela o lado mais humano e vulnerável da personagem.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <hr style="margin-top:28px;border:none;border-top:1px solid #e9eef3">
+
+    <footer role="contentinfo" class="wrap" id="creditos">
+      <section id="contactos" aria-labelledby="contactos-titulo">
+        <h2 id="contactos-titulo">Contactos & Créditos</h2>
+        <p>Para comentários sobre este exercício contacte me em: <a href="mailto:up202304744@up.pt">up202304744@up.pt</a></p>
+        <p>Para mais detalhes consulta a <a href="https://en.wikipedia.org/wiki/Michael_Scott_(The_Office)" target="_blank" rel="noopener">página da Wikipedia</a>.</p>
+        <p>Personagem de <em>The Office</em>, propriedade da NBC.</p>
+      </section>
+      <p style="margin-top:12px;color:#6b6b6b">&copy; 2025 — Raquel Oliveira</p>
+    </footer>
+
+  </main>
+
+  <a href="#site-header" class="back-to-top" title="Voltar ao início da página">↑</a>
+
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.length > 1){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target){
+            window.scrollTo({top: target.offsetTop - 70, behavior: 'smooth'});
+          }
+        }
+      });
+    });
+
+    // Back to top visibility
+    const back = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 300) back.style.opacity = '1'; else back.style.opacity = '0.0';
+    });
+    back.style.transition = 'all 0.24s ease';
+    back.style.opacity = '0';
+  </script>
+</body>
 </html>
-
